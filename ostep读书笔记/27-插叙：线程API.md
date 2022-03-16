@@ -105,7 +105,8 @@ int main(int argc, char *argv)
 #### 锁
 
 ```c
-int pthread_mutex_lock(pthread_mutex_t *mutex); int pthread_mutex_unlock(pthread_mutex_t *mutex);
+int pthread_mutex_lock(pthread_mutex_t *mutex); 
+int pthread_mutex_unlock(pthread_mutex_t *mutex);
 ```
 
 合理猜想锁的工作原理：
@@ -178,8 +179,10 @@ int main(int argc, char *argv)
 唤醒线程的代码：
 
 ```c
-pthread_mutex_lock(&lock); ready = 1;
-pthread_cond_signal(&cond); pthread_mutex_unlock(&lock);
+pthread_mutex_lock(&lock); 
+ready = 1;
+pthread_cond_signal(&cond); 
+pthread_mutex_unlock(&lock);
 ```
 
 > 等待调用除了使调用线程进入睡眠状态外，还会让调用者睡眠 时释放锁，不然别人怎么获得锁呢？
