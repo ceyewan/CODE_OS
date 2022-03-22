@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-        "*.py": "python",
-        "stdlib.h": "c",
-        "pthread.h": "c"
-    }
-}
