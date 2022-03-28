@@ -2,10 +2,11 @@
 #include "kernel/stat.h"
 #include "user/user.h"
 
-int main(int argc, char const* argv[])
+int main(int argc, char const *argv[])
 {
     // 期望参数数量为 2
-    if (argc != 2) {
+    if (argc != 2)
+    {
         fprintf(2, "error\n");
         exit(1);
     }
