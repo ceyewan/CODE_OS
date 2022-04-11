@@ -215,7 +215,7 @@ int main(int argc, char *argv[])
 
 运行结果（子进程相当于复制了一份，两个进程之间没有影响）
 
-![image-20220302235803849](https://gitee.com/ceyewan/pic/raw/master/images/image-20220302235803849.png)
+![image-20220302235803849](../res/image-20220302235803849.png)
 
 2．编写一个打开文件的程序（使用 open()系统调用），然后调用 fork()创建一个新进程。 子进程和父进程都可以访问 open()返回的文件描述符吗？当它们并发（即同时）写入文件时， 会发生什么？
 
@@ -254,7 +254,7 @@ int main(int argc, char *argv[])
 
 运行结果（我估计并发可能会出错）：
 
-![image-20220303000920021](https://gitee.com/ceyewan/pic/raw/master/images/image-20220303000920021.png)
+![image-20220303000920021](../res/image-20220303000920021.png)
 
 3．使用 fork()编写另一个程序。子进程应打印“hello”，父进程应打印“goodbye”。你 应该尝试确保子进程始终先打印。你能否不在父进程调用 wait()而做到这一点呢？
 
@@ -370,7 +370,9 @@ int main()
 
 运行结果：
 
-![image-20220303002457612](https://gitee.com/ceyewan/pic/raw/master/images/image-20220303002457612.png)6．对前一个程序稍作修改，这次使用 waitpid()而不是 wait()，什么时候 waitpid()会有用？
+![image-20220303002457612](../res/image-20220303002457612.png)
+
+6．对前一个程序稍作修改，这次使用 waitpid()而不是 wait()，什么时候 waitpid()会有用？
 
 > ```
 > pid_t waitpid(pid_t pid,int *status,int options)
@@ -438,7 +440,7 @@ int main(int argc, char *argv[])
 
 什么也不会发生，子进程无法打印，但是不影响主进程，如果重定向了那么就会输入到文件中。
 
-![image-20220320212508369](https://gitee.com/ceyewan/pic/raw/master/images/image-20220320212508369.png)
+![image-20220320212508369](../res/image-20220320212508369.png)
 
 8．编写一个程序，创建两个子进程，并使用 pipe()系统调用，将一个子进程的标准输出连接到另一个子进程的标准输入。
 

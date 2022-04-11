@@ -68,11 +68,11 @@ int main()
 
 2．接下来，编译该程序，其中包含符号信息（使用-g 标志）。这样做可以将更多信息放入可执行文件中，使调试器可以访问有关变量名称等的更多有用信息。通过输入 gdb null， 在调试器下运行该程序，然后，一旦 gdb 运行，输入 run。gdb 显示什么信息？（正常）
 
-![image-20220321205035752](https://gitee.com/ceyewan/pic/raw/master/images/image-20220321205035752.png)
+![image-20220321205035752](../res/image-20220321205035752.png)
 
 3．最后，对这个程序使用 valgrind 工具。我们将使用属于 valgrind 的 memcheck 工具 来分析发生的情况。输入以下命令来运行程序：valgrind --leak-check=yes null。当你运行它 时会发生什么？你能解释工具的输出吗？（系统应该处理好了）
 
-![image-20220321205649068](https://gitee.com/ceyewan/pic/raw/master/images/image-20220321205649068.png)
+![image-20220321205649068](../res/image-20220321205649068.png)
 
 4．编写一个使用 malloc()来分配内存的简单程序，但在退出之前忘记释放它。这个程序运行时会发生什么？你可以用 gdb 来查找它的任何问题吗？用 valgrind 呢（再次使用 --leak-check=yes 标志）？
 
@@ -91,7 +91,7 @@ gdb：无事发生
 
 valgrind ：lost 4 bytes，内存泄漏 4 字节。
 
-![image-20220321205939149](https://gitee.com/ceyewan/pic/raw/master/images/image-20220321205939149.png)
+![image-20220321205939149](../res/image-20220321205939149.png)
 
 5．编写一个程序，使用 malloc 创建一个名为 data、大小为 100 的整数数组。然后，将 data[100]设置为 0。当你运行这个程序时会发生什么？当你使用 valgrind 运行这个程序时会 发生什么？程序是否正确？
 
@@ -108,7 +108,7 @@ int main()
 }
 ```
 
-![image-20220321210513628](https://gitee.com/ceyewan/pic/raw/master/images/image-20220321210513628.png)
+![image-20220321210513628](../res/image-20220321210513628.png)
 
 大小为 4 的无效写入，运行是没有问题的。
 
@@ -130,7 +130,7 @@ int main()
 }
 ```
 
-![image-20220321210917883](https://gitee.com/ceyewan/pic/raw/master/images/image-20220321210917883.png)
+![image-20220321210917883](../res/image-20220321210917883.png)
 
 大小为 4 的无效读取，而且读到的并不是之前值了。
 
@@ -154,7 +154,7 @@ int main()
 
 运行时出错：（free只能处理 malloc 返回的指针）
 
-![image-20220321211230250](https://gitee.com/ceyewan/pic/raw/master/images/image-20220321211230250.png)
+![image-20220321211230250](../res/image-20220321211230250.png)
 
 8．尝试一些其他接口来分配内存。例如，创建一个简单的向量似的数据结构，以及使用 realloc()来管理向量的相关函数。使用数组来存储向量元素。当用户在向量中添加条目时， 请使用realloc()为其分配更多空间。这样的向量表现如何？它与链表相比如何？使用valgrind 来帮助你发现错误。
 
